@@ -1,0 +1,34 @@
+<a href="#comment_form" data-toggle="collapse" class="">
+    <div class="comment_form_header">
+        <h4>оставить отзыв</h4>
+    </div>
+</a>
+
+<div id="comment_form" class="collapse in">
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1">
+
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
+            <form action="{% url 'posts:leave_comment'%}" method="POST">
+                <h4>Оставьте свой комментарий здесь</h4>
+                {% csrf_token %}
+                Ваше Имя: <br>
+                <input type="text" name="author" cols="45" id=""><br>
+                Текст комментария:<br>
+                <textarea name="text" id="" cols="45" rows="10">
+
+                </textarea><br>
+                <input type="submit" value="Добавить коментарий" class="btn btn-lg btn-success">
+            </form>
+            <div class="dummy_1">
+
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-1">
+
+        </div>
+    </div>
+</div>

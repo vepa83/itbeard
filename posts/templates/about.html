@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block title %}О канале{% endblock %}
+
+
+{% block content %}
+<!-- main part-->
+<div class="main_part">
+    <div class="container-fluid">
+        <div class="container-fluid" id="category1_text">
+            <h4>о канале</h4>
+        </div>
+        <div class="container-fluid">
+            <div class="dummy_1">
+
+            </div>
+            
+            {% for post in posts %}
+
+            <div class="" style="display:block; position:relative; width:100%;">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sx-12">
+                    <a href="http://{{post.link}}" target="_blank">
+                        <img src="{{ post.picture.url }}" style="max-height: 220px; margin-bottom: 10px;" alt="youtube_video" class="img-responsive img-round">
+                    </a>
+                </div>
+            
+                <div class="col-lg-8 col-md-8 col-sm-6 col-sx-12">
+                    <h4>{{post.title}}</h4>
+                    <p style="text-align: justify;">
+                        {{post.text}}            
+                    </p>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
+                    <hr>
+                </div>
+            </div>
+            {% empty %}
+            <h4>Нет постов о канале </h4>
+
+            {% endfor %}
+                
+            
+        </div>
+
+    </div>
+</div>
+<!-- end main part -->
+{% endblock content %}

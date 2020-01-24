@@ -1,0 +1,95 @@
+<!--Menu dropdown in small screen with logo and search form-->
+<div class="header" id="header-top">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#in_the_bottom"
+                aria-expanded="false">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'posts:home' %}">АйТиБорода</a>
+        </div>
+        <div class="collapse navbar-collapse" id="in_the_bottom">
+            <ul class="nav navbar-nav">
+            {% if menu_item_active == 1 %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
+                
+                    <a href="{% url 'posts:home' %}">Главная
+                    {% if menu_item_active == 1 %}
+                        <span class="sr-only">(current)</span>
+                    {% endif %}
+                    </a>
+                </li>
+                
+                {% if menu_item_active == 2 %}
+                <li class="active">
+                    {% else %}
+                <li>
+                    {% endif %}
+                    <a href="{% url 'posts:about' %}">О канале
+                        {% if menu_item_active == 2 %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                {% if menu_item_active == 3 %}
+                <li class="active">
+                    {% else %}
+                <li>
+                    {% endif %}
+                    <a href="{% url 'posts:contact' %}">Контакты
+                        {% if menu_item_active == 3 %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                {% if menu_item_active == 4 %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                    <a href="{% url 'posts:comments' %}">Отзывы
+                        {% if menu_item_active == 4 %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
+                {% if menu_item_active == 5 %}
+                <li class="dropdown active">
+                {% else %}
+                <li class="dropdown">
+                {% endif %}
+                
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        aria-expanded="false">Категории
+                        
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        {% for category in categories %}
+                            <li><a href="{% url 'posts:category' category.slug %}">{{category.name}}</a></li>
+                        {% endfor %}
+                            
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search" action="{% url 'posts:searchresult' %}" method='post'>
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="текст для поиска..." name="text">
+                </div>
+                <input type="submit" value="поиск" class="btn btn-primary">
+            </form>
+
+        </div>
+    </nav>
+</div>
+<!--end Menu dropdown in small screen with logo and search form-->

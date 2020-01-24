@@ -1,0 +1,56 @@
+{% extends 'index.html' %}     
+{% block title %}список контактов{% endblock %}
+
+{% block content %}
+    <div class="main_part">
+        <!-- main part-->
+    <div class="container-fluid">
+        <div class="container-fluid" id="category1_text">
+            <h4>список контактов</h4>
+        </div>
+        <div class="container-fluid">
+            <!--show hide on click-->
+            <div class="row">
+
+                
+            {% for post in posts %}
+                <div class="col-lg-3 col-md-3 col-sm-6 col-sx-12">
+                
+                    <a href="#{{post.id}}" data-toggle="collapse" class="">
+                        <div class="contact_item_header">
+                            <h4>{{post.title|upper}}</h4>
+                        </div>
+                    </a>
+                
+                    <div id="{{post.id}}" class="collapse in">
+                        <a href="http://{{post.link}}" target="_blank" class="btn btn-sm btn-primary" role="button">
+                            <strong>Перейти</strong>
+                        </a>
+                        <div class="dummy">
+                        </div>
+                        <p style="text-align: justify;">
+                            <img class="img-rounded" src="{{post.thumbnail.url}}" alt="{{post.title}}" style="display:block; position:relative; max-width:50%; ">
+                            {{post.text}}
+                        </p>
+                    </div>
+                
+                </div>
+                
+                <div class="{% cycle 'emptyjan' 'clearfix visible-sm' %}"></div>
+                
+                
+                    
+                
+            
+            {% empty %}
+            <h3>Нет контактов!</h3>
+                                                   
+            {% endfor %}
+                    
+            </div>
+            <!--end show hide on click-->
+        </div>
+    </div>
+    </div>
+{% endblock content %}
+    
